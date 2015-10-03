@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="bpmn-browser">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="activiti-image-generator-5.18.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-image-generator/activiti-image-generator">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-engine-5.18.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-engine/activiti-engine">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-bpmn-model-5.18.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-bpmn-model/activiti-bpmn-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-bpmn-converter-5.18.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-bpmn-converter/activiti-bpmn-converter">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="bpmn-browser"/>
+        <property name="java-output-path" value="/bpmn-browser/target/classes"/>
+    </wb-module>
+</project-modules>
