@@ -111,7 +111,6 @@ public class BPMN20XMLParser {
 		bp.sourceString(xml);
 		this.execute(bp);
 		bp.getProcessDefinitions();
-		return null;
-		//return this.generatePngDiagramFromBPMNModel(bp.getBpmnModel());
+		return this.generatePngDiagramFromBPMNModel(bp.getBpmnModel());
 	}
 }
