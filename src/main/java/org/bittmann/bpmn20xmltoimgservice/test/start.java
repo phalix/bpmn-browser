@@ -11,14 +11,9 @@ public class start {
 		//bpmn20xmlparser.parseXMLToFile(xml, "access.jpg");
 		//bpmn20xmlparser.parseFile("access.bpmn20.xml");
 		//bpmn20xmlparser.parseFile("Unknown-2.bpmn20.xml");
-		bpmn20xmlparser.parseFile("complex-no-extensions.bpmn20.xml");
+		bpmn20xmlparser.parseFile("WebContent/resources/complex-no-extensions.bpmn20.xml");
 		//bpmn20xmlparser.parseFile("complex.bpmn20.xml");
 		//bpmn20xmlparser.parseFile("bpmn20_finance.bpmn20.xml");
-		bpmn20xmlparser.parseFile("bpmn20_gesamt.bpmn20.xml");
-		System.out.println("fertig");
-		
+		//bpmn20xmlparser.parseFile("bpmn20_gesamt.bpmn20.xml");
 	}
-	
-	
-
 }

@@ -18,19 +18,16 @@ import org.bittmann.engine.impl.bpmn.parser.BittmannBpmnParse;
 import org.bittmann.image.impl.BittmannProcessDiagramGenerator;
 
 
-
-
-
 /**
  * @author Sebastian Bittmann
  */
+
 public class BPMN20XMLParser {
 	BpmnParser bpr;
 	BpmnParseFactory bpf;
 	ProcessEngineConfigurationImpl pec;
+	
 	public BPMN20XMLParser(){
-		
-		
 		bpf = new BpmnParseFactory() {
 			
 			public BittmannBpmnParse createBpmnParse(BpmnParser bpmnParser) {
@@ -43,15 +40,12 @@ public class BPMN20XMLParser {
 			
 			@Override
 			protected CommandInterceptor createTransactionInterceptor() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		};	
 		Context.setProcessEngineConfiguration(pec);
 		pec.setEnableSafeBpmnXml(true);
 		pec.setXmlEncoding("UTF-8");
-		
-		
 	}
 
 	private void writeFileFromStream(InputStream pngDiagram,Path toPath){
@@ -81,9 +75,13 @@ public class BPMN20XMLParser {
 	}
 	
 	public void parseFile(String file){
-		Path input = FileSystems.getDefault().getPath("resources",file);
-		Path output = FileSystems.getDefault().getPath("resources",file+".png");
+		Path input = FileSystems.getDefault().getPath(file);
+		Path output = FileSystems.getDefault().getPath(file+".png");
 		
+		parseXMLFileToPngFile(input, output);
+	}
+
+	public void parseXMLFileToPngFile(Path input, Path output) {
 		InputStream br;
 		try {
 			br = Files.newInputStream(input,java.nio.file.StandardOpenOption.READ);
@@ -97,8 +95,6 @@ public class BPMN20XMLParser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	private InputStream generatePngDiagramFromBPMNModel(BpmnModel bpmnm){
