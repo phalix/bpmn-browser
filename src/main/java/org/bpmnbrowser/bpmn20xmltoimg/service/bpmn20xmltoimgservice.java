@@ -1,17 +1,14 @@
 package org.bpmnbrowser.bpmn20xmltoimg.service;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
-import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
-
 import java.nio.file.StandardOpenOption;
-import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
@@ -58,10 +55,7 @@ public class bpmn20xmltoimgservice {
 			result.append("}");
 			return Response.ok(result.toString()).build();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			return Response.status(404).build();
-		}finally{
-
 		}
 	}
 
@@ -142,11 +136,8 @@ public class bpmn20xmltoimgservice {
 		java.nio.file.Path input = null;// = FileSystems.getDefault().getPath(realPath, ".xml");
 
 		PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:"+realPath+"/*.xml");
-
-
-
+		
 		try {
-
 			Iterator<java.nio.file.Path> iterator = Files.walk(subRoot).iterator();
 			while(iterator.hasNext()){
 				java.nio.file.Path next = iterator.next();
@@ -154,9 +145,9 @@ public class bpmn20xmltoimgservice {
 					input = next;
 				}
 			};
-
+			
 			if(input == null ){
-				return Response.status(404).build();
+				throw new FileNotFoundException();
 			}
 
 
@@ -174,8 +165,10 @@ public class bpmn20xmltoimgservice {
 			return Response.ok(resp).build();
 		}  catch(NoSuchFileException e){
 			return Response.status(404).build();
+		} catch(FileNotFoundException e){
+			return Response.status(404).build();
 		} catch (IOException e) {
 			return Response.status(500).build();
-		}
+		}  
 	}
 }
